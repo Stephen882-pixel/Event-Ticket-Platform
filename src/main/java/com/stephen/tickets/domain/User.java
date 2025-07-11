@@ -1,15 +1,14 @@
 package com.stephen.tickets.domain;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -31,12 +30,25 @@ public class User {
     @Column(name = "email",nullable = false)
     private String email;
     
-    
-    // TODO : organized events
 
-    // TODO: Attending Events
+    @OneToMany(mappedBy = "organizer",cascade = CascadeType.ALL)
+    private List<Event> organizedEvents = new ArrayList<>();
 
-    // TODO: Staffing Events
+    @ManyToMany
+    @JoinTable(
+            name = "user_attending_events",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id")
+    )
+    private List<Event> attendingEvents = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_staffing_events",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id")
+    )
+    private List<Event> staffingEvents = new ArrayList<>();
 
 
     @CreatedDate
