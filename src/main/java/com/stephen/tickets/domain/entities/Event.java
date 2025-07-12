@@ -30,19 +30,19 @@ public class Event {
     private String name;
 
     @Column(name = "start")
-    private LocalDate start;
+    private LocalDateTime start;
 
     @Column(name = "end")
-    private LocalDate end;
+    private LocalDateTime end;
 
     @Column(name = "venue",nullable = false)
     private String venue;
 
     @Column(name = "sales_start")
-    private LocalDate salesStart;
+    private LocalDateTime salesStart;
 
     @Column(name = "sales_end")
-    private LocalDate salesEnd;
+    private LocalDateTime salesEnd;
 
     @Column(name = "status",nullable = false)
     @Enumerated(EnumType.STRING)
