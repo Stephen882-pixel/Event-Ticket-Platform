@@ -2,7 +2,7 @@ package com.stephen.tickets.filters;
 
 
 import com.stephen.tickets.repositories.UserRepository;
-import com.stephen.tickets.domain.User;
+import com.stephen.tickets.domain.entities.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.stephen.tickets.domain;
+package com.stephen.tickets.domain.entities;
 
 
 import jakarta.persistence.*;

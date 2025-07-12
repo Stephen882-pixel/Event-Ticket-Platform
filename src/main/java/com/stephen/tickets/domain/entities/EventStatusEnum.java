@@ -1,4 +1,4 @@
-package com.stephen.tickets.domain;
+package com.stephen.tickets.domain.entities;
 
 public enum EventStatusEnum {
     DRAFT,
