@@ -14,5 +14,7 @@ public interface EventRepository extends JpaRepository<Event, UUID> {
 
     Page<Event> findByOrganizerId(UUID organizerId, Pageable pageable);
 
-    Optional<Event> findByIdAndOrganizerId(UUID id,UUID organizerId);
+    Optional<Event>  findByIdAndOrganizerId(UUID id,UUID organizerId);
+
+//    UUID organizerId(UUID organizerId);
 }
