@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Component
@@ -40,7 +41,8 @@ public class UserProvisioningFilter extends OncePerRequestFilter {
                 user.setId(KeycloakId);
                 user.setName(jwt.getClaimAsString("preferred_username"));
                 user.setEmail(jwt.getClaimAsString("email"));
-
+                user.setCreatedAt(LocalDateTime.now()); // Set createdAt
+                user.setUpdatedAt(LocalDateTime.now());
                 userRepository.save(user);
             }
         }

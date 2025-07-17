@@ -21,7 +21,7 @@ public class CreateEventResponseDto {
     private LocalDateTime salesStart;
     private LocalDateTime salesEnd;
     private EventStatusEnum status;
-    private List<CreateTicketTypeRequestDto> ticketTypes;
+    private List<CreateTypeResponseDto> ticketTypes;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

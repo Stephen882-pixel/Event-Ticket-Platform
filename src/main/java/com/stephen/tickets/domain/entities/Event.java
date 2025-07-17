@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,6 +20,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EntityListeners(AuditingEntityListener.class)
 public class Event {
 
     @Id
@@ -29,10 +31,10 @@ public class Event {
     @Column(name = "name",nullable = false)
     private String name;
 
-    @Column(name = "start")
+    @Column(name = "event_start")
     private LocalDateTime start;
 
-    @Column(name = "end")
+    @Column(name = "event_end")
     private LocalDateTime end;
 
     @Column(name = "venue",nullable = false)
@@ -66,7 +68,7 @@ public class Event {
     private LocalDateTime createdAt;
 
     @LastModifiedDate
-    @Column(name = "updated_at",nullable = false)
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     @Override

@@ -31,7 +31,7 @@ public class User {
     private String email;
     
 
-    @OneToMany(mappedBy = "organizer    ",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "organizer",cascade = CascadeType.ALL)
     private List<Event> organizedEvents = new ArrayList<>();
 
     @ManyToMany
