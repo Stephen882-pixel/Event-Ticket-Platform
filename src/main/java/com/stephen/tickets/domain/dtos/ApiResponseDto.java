@@ -16,7 +16,7 @@ public class ApiResponseDto<T> {
         return new ApiResponseDto<>(message,"success",data);
     }
 
-    public static <T> ApiResponseDto<T> error(String message, T data) {
-        return new ApiResponseDto<>(message,"error",data);
+    public static <T> ApiResponseDto<T> error(String message) {
+        return new ApiResponseDto<>(message,"error",null);
     }
 }

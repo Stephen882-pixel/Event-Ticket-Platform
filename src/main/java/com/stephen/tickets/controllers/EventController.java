@@ -2,10 +2,7 @@ package com.stephen.tickets.controllers;
 
 
 import com.stephen.tickets.domain.CreateEventRequest;
-import com.stephen.tickets.domain.dtos.ApiResponseDto;
-import com.stephen.tickets.domain.dtos.CreateEventRequestDto;
-import com.stephen.tickets.domain.dtos.CreateEventResponseDto;
-import com.stephen.tickets.domain.dtos.ListEventsResponseDto;
+import com.stephen.tickets.domain.dtos.*;
 import com.stephen.tickets.domain.entities.Event;
 import com.stephen.tickets.mappers.EventMappers;
 import com.stephen.tickets.services.EventService;
@@ -60,9 +57,25 @@ public class EventController {
 
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping(path = "/{eventId}")
+    public ResponseEntity<ApiResponseDto<GetEventDetailsResponseDto>> getEvent(
+            @AuthenticationPrincipal Jwt jwt, @PathVariable UUID eventId
+    ) {
+        UUID userId = parseUserId(jwt);
+        return eventService.getEventForOrganizer(userId, eventId)
+                .map(event -> {
+                    GetEventDetailsResponseDto dto = eventMappers.toGetEventDetailsResponseDto(event);
+                    ApiResponseDto<GetEventDetailsResponseDto> response = ApiResponseDto.success("Event fetched successfully", dto);
+                    return ResponseEntity.ok(response);
+                })
+                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body(ApiResponseDto.error("Event not found")));
+    }
+
     private UUID parseUserId(Jwt jwt) {
         return UUID.fromString(jwt.getSubject());
     }
+
 }
 
 
