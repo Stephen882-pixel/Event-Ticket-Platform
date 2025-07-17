@@ -2,6 +2,7 @@ package com.stephen.tickets.controllers;
 
 
 import com.stephen.tickets.domain.CreateEventRequest;
+import com.stephen.tickets.domain.UpdateEventRequest;
 import com.stephen.tickets.domain.dtos.*;
 import com.stephen.tickets.domain.entities.Event;
 import com.stephen.tickets.mappers.EventMappers;
@@ -70,6 +71,25 @@ public class EventController {
                     return ResponseEntity.ok(response);
                 })
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).body(ApiResponseDto.error("Event not found")));
+    }
+
+    @PutMapping(path = "/{eventId}")
+    public ResponseEntity<ApiResponseDto<UpdateEventResponseDto>> updateEvent(
+            @AuthenticationPrincipal Jwt jwt,
+            @PathVariable UUID eventId,
+            @Valid @RequestBody UpdateEventRequestDto updateEventRequestDto) {
+        UpdateEventRequest updateEventRequest = eventMappers.fromDto(updateEventRequestDto);
+        UUID userId = parseUserId(jwt);
+
+        Event updatedEvent = eventService.updateEventForOrganizer(userId, eventId, updateEventRequest);
+        UpdateEventResponseDto updateEventResponseDto = eventMappers.toUpdateEventResponseDto(updatedEvent);
+
+        ApiResponseDto<UpdateEventResponseDto> response = ApiResponseDto.success(
+                "Event updated successfully",
+                updateEventResponseDto
+        );
+
+        return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
     private UUID parseUserId(Jwt jwt) {
