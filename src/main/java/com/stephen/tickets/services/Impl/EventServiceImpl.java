@@ -1,6 +1,7 @@
 package com.stephen.tickets.services.Impl;
 
 import com.stephen.tickets.domain.CreateEventRequest;
+import com.stephen.tickets.domain.UpdateEventRequest;
 import com.stephen.tickets.domain.entities.Event;
 import com.stephen.tickets.domain.entities.TicketType;
 import com.stephen.tickets.exceptions.UserNotFoundException;
@@ -69,5 +70,10 @@ public class EventServiceImpl implements EventService {
     @Override
     public Optional<Event> getEventForOrganizer(UUID organizerId, UUID id) {
         return eventRepository.findByIdAndOrganizerId(id,organizerId);
+    }
+
+    @Override
+    public Event updateEventForOrganizer(UUID organizer, UUID id, UpdateEventRequest event) {
+        return null;
     }
 }
