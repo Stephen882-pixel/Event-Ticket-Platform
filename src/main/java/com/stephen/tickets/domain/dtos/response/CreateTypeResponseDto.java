@@ -1,4 +1,4 @@
-package com.stephen.tickets.domain.dtos;
+package com.stephen.tickets.domain.dtos.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateTicketTypeResponseDto {
+public class CreateTypeResponseDto {
     private UUID id;
     private String name;
     private Double price;

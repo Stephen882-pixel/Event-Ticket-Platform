@@ -1,4 +1,4 @@
-package com.stephen.tickets.domain.dtos;
+package com.stephen.tickets.domain.dtos.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

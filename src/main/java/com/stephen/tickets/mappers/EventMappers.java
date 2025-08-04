@@ -5,7 +5,11 @@ import com.stephen.tickets.domain.CreateEventRequest;
 import com.stephen.tickets.domain.CreateTicketTypeRequest;
 import com.stephen.tickets.domain.UpdateEventRequest;
 import com.stephen.tickets.domain.UpdateTicketTypeRequest;
-import com.stephen.tickets.domain.dtos.*;
+import com.stephen.tickets.domain.dtos.request.CreateEventRequestDto;
+import com.stephen.tickets.domain.dtos.request.CreateTicketTypeRequestDto;
+import com.stephen.tickets.domain.dtos.request.UpdateEventRequestDto;
+import com.stephen.tickets.domain.dtos.request.UpdateTicketTypeRequestDto;
+import com.stephen.tickets.domain.dtos.response.*;
 import com.stephen.tickets.domain.entities.Event;
 import com.stephen.tickets.domain.entities.TicketType;
 import org.mapstruct.Mapper;
@@ -26,7 +30,7 @@ public interface EventMappers {
 
     ListEventTicketTypeResponseDto toDto(TicketType ticketType);
 
-    ListEventsResponseDto  toListEventResponseDto(Event event);
+    ListEventsResponseDto toListEventResponseDto(Event event);
 
     GetEventDetailsResponseDto toGetEventDetailsTicketTypesResponseDto(TicketType ticketType);
 

@@ -1,4 +1,4 @@
-package com.stephen.tickets.domain.dtos;
+package com.stephen.tickets.domain.dtos.response;
 
 import com.stephen.tickets.domain.entities.EventStatusEnum;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateEventResponseDto {
+public class CreateEventResponseDto {
     private UUID id;
     private String name;
     private LocalDateTime start;
@@ -21,7 +21,7 @@ public class UpdateEventResponseDto {
     private LocalDateTime salesStart;
     private LocalDateTime salesEnd;
     private EventStatusEnum status;
-    private List<UpdateTicketTypeResponseDto> ticketTypes;
+    private List<CreateTypeResponseDto> ticketTypes;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

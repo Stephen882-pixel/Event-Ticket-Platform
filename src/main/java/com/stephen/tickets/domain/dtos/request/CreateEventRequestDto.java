@@ -1,4 +1,4 @@
-package com.stephen.tickets.domain.dtos;
+package com.stephen.tickets.domain.dtos.request;
 
 import com.stephen.tickets.domain.entities.EventStatusEnum;
 import jakarta.validation.Valid;

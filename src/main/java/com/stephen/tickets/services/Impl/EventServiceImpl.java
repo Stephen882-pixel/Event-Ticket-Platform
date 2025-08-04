@@ -84,7 +84,7 @@ public class EventServiceImpl implements EventService {
         if(null == event.getId()){
             throw new  EventUpdateException("Event ID cannot be null");
         }
-        if(!(id == event.getId())){
+        if(!(id.equals(event.getId()))){
             throw new EventUpdateException("Provided ID does not match");
         }
         Event existingEvent = eventRepository

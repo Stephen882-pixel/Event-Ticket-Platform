@@ -3,7 +3,9 @@ package com.stephen.tickets.controllers;
 
 import com.stephen.tickets.domain.CreateEventRequest;
 import com.stephen.tickets.domain.UpdateEventRequest;
-import com.stephen.tickets.domain.dtos.*;
+import com.stephen.tickets.domain.dtos.request.CreateEventRequestDto;
+import com.stephen.tickets.domain.dtos.request.UpdateEventRequestDto;
+import com.stephen.tickets.domain.dtos.response.*;
 import com.stephen.tickets.domain.entities.Event;
 import com.stephen.tickets.mappers.EventMappers;
 import com.stephen.tickets.services.EventService;
