@@ -4,6 +4,7 @@ import com.stephen.tickets.domain.CreateEventRequest;
 import com.stephen.tickets.domain.UpdateEventRequest;
 import com.stephen.tickets.domain.UpdateTicketTypeRequest;
 import com.stephen.tickets.domain.entities.Event;
+import com.stephen.tickets.domain.entities.EventStatusEnum;
 import com.stephen.tickets.domain.entities.TicketType;
 import com.stephen.tickets.exceptions.EventNotFoundException;
 import com.stephen.tickets.exceptions.EventUpdateException;
@@ -145,6 +146,11 @@ public class EventServiceImpl implements EventService {
     @Transactional
     public void deleteEventForOrganizer(UUID organizerId, UUID id) {
         getEventForOrganizer(organizerId, id).ifPresent(eventRepository::delete);
+    }
+
+    @Override
+    public Page<Event> listPublishedEvents(Pageable pageable) {
+        return eventRepository.findByStatus(EventStatusEnum.PUBLISHED, pageable);
     }
 
 }
