@@ -44,5 +44,7 @@ public interface EventMappers {
 
     UpdateEventResponseDto toUpdateEventResponseDto(Event event);
 
+    ListPublishedEventResponseDto toListPublishedEventResponseDto(Event event);
+
 
 }
